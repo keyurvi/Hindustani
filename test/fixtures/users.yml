@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  user_name: MyString
+  aadhar_no: 1
+  birth_date: 2019-03-25
+  fathers_name: MyString
+  mothers_name: MyString
+  children: 1
+
+two:
+  user_id: 1
+  user_name: MyString
+  aadhar_no: 1
+  birth_date: 2019-03-25
+  fathers_name: MyString
+  mothers_name: MyString
+  children: 1

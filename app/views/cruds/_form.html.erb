@@ -1,0 +1,17 @@
+<%= form_with(model: crud, local: true) do |form| %>
+  <% if crud.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(crud.errors.count, "error") %> prohibited this crud from being saved:</h2>
+
+      <ul>
+      <% crud.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
