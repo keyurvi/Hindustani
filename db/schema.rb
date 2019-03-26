@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_160309) do
+ActiveRecord::Schema.define(version: 2019_03_26_061546) do
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "children_id"
@@ -44,13 +44,11 @@ ActiveRecord::Schema.define(version: 2019_03_25_160309) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "user_name"
-    t.integer "aadhar_no"
-    t.date "birth_date"
-    t.string "fathers_name"
-    t.string "mothers_name"
-    t.integer "children"
+    t.string "name"
+    t.integer "aadhar_number"
+    t.date "bdate"
+    t.string "father_name"
+    t.string "mother_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

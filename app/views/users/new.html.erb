@@ -1,0 +1,32 @@
+<%= form_with scope: :user,url: users_path, local: true do |form| %>
+	<p>
+	<%= form.label :Name %><br>
+	<%= form.text_field :name %>
+	</p>
+
+	<p>
+	<%= form.label :Aadhar_Number %><br>
+	<%= form.text_field :aadhar_number %>
+	</p>
+	<p>
+	<%= form.label :Birthdate %><br>
+	<%= form.text_field :bdate %>
+	</p>
+	<p>
+	<%= form.label :Father_name %><br>
+	<%= form.text_field :father_name %>
+	</p>
+	<p>
+	<%= form.label :Mother_name %><br>
+	<%= form.text_field :mother_name %>
+	</p>
+
+
+	<p>
+	<%= form.submit %>
+	</p>
+	<% end %>
+
+
+	<%= link_to 'Back', users_path %>
+
