@@ -1,2 +1,0 @@
-class Crud < ApplicationRecord
-end
