@@ -4,22 +4,31 @@
 </p>
  
 <p>
-  <strong>Aadhar No:</strong>
+  <strong>Aadhar No :</strong>
   <%= @user.aadhar_number %>
 </p>
 <p>
-  <strong>Birth Date:</strong>
+  <strong>Birth Date :</strong>
   <%= @user.bdate %>
 </p>
  
 <p>
   <strong>Father Name:</strong>
   <%= @user.father_name %>
+  
+  <a href="id">Home Page 1</a><br/>   
 </p>
+
 <p>
   <strong>Mother Name:</strong>
   <%= @user.mother_name %>
 </p>
+
+<p>
+  <strong>Children Name:</strong>
+  <%= @user.children %>
+</p>
+
 
 
 <%= link_to 'Back', users_path %>

@@ -20,6 +20,6 @@ class UsersController < ApplicationController
 
   	private
   		def user_params
-    		params.require(:user).permit(:name, :aadhar_number, :bdate, :father_name , :mother_name)
+    		params.require(:user).permit(:name, :aadhar_number, :bdate, :father_name , :mother_name, :children, :father_aadhar_number, :father_bdate, :mother_aadhar_number, :mother_bdate, :children_aadhar_number, :children_bdate)
   		end
 end
