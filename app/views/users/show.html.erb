@@ -14,19 +14,17 @@
  
 <p>
   <strong>Father Name:</strong>
-  <%= @user.father_name %>
-  
-  <a href="id">Home Page 1</a><br/>   
+  <%= link_to @user.father_name, father_path(:user_id => @user.id) %>
 </p>
 
 <p>
   <strong>Mother Name:</strong>
-  <%= @user.mother_name %>
+  <%= link_to @user.mother_name, mother_path(:user_id => @user.id) %>
 </p>
 
 <p>
   <strong>Children Name:</strong>
-  <%= @user.children %>
+  <%= link_to @user.children, children_path(:user_id => @user.id) %>
 </p>
 
 
