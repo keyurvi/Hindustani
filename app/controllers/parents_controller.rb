@@ -6,6 +6,7 @@ class ParentsController < ApplicationController
     	@user = User.find(params[:user_id])
 	end
 	def children
-    	@user = User.find(params[:user_id])
+		@user = User.find(params[:user_id])
+    	@children = Child.find(params[:child_id])
 	end
 end

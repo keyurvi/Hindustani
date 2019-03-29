@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     	@users = User.paginate(page: params[:page], per_page: 5)
   	end
 	def new
+		@user = User.new
   	end
 
   	def create
@@ -40,6 +41,6 @@ class UsersController < ApplicationController
 
   	private
   		def user_params
-    		params.require(:user).permit(:name, :aadhar_number, :bdate, :father_name, :mother_name, :children, :father_aadhar_number, :father_bdate, :mother_aadhar_number, :mother_bdate, :children_aadhar_number, :children_bdate)
+    		params.require(:user).permit(:name, :aadhar_number, :bdate, :father_name, :mother_name, :children, :father_aadhar_number, :father_bdate, :mother_aadhar_number, :mother_bdate, :avatar, childrens_attributes:[:id, :children_name, :children_aadhar_number, :children_bdate, :_destroy])
   		end
 end

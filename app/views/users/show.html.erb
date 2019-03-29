@@ -1,4 +1,7 @@
 <p>
+  <%= image_tag @user.avatar.url(:medium) %>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
@@ -23,10 +26,13 @@
 </p>
 
 <p>
-  <strong>Children Name:</strong>
-  <%= link_to @user.children, children_path(:user_id => @user.id) %>
+  <strong>Children</strong>
+  <% @user.childrens.each do |child| %>
+    <%= link_to child.children_name, children_path(:user_id => @user.id,:child_id => child.id) %>    
+  <%end%>
 </p>
 
+ 
 
 <%= link_to 'Edit', edit_user_path(@user) %>
 <%= link_to 'Back', users_path %>

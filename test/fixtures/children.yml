@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  children_name: MyString
+  children_aadhar_number: MyString
+  children_bdate: 2019-03-29
+  user: one
+
+two:
+  children_name: MyString
+  children_aadhar_number: MyString
+  children_bdate: 2019-03-29
+  user: two

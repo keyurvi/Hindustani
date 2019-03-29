@@ -1,5 +1,10 @@
-<%= form_with scope: :user,url: users_path, local: true do |form| %>
-
+<%= form_for(@user, :url => (@user.new_record? ? users_path : user_path(@user)), :method => (@user.new_record? ? "POST" : "PUT"), :html => {:multipart => true, :id => 'users-form'}) do |form| %>
+	
+	<% if @user.errors.full_messages.any? %>
+		  <% @user.errors.full_messages.each do |error_message| %>
+		    <%= error_message if @user.errors.full_messages.first == error_message %> <br />
+		  <% end %>
+		<% end %>
 	<p>
 	<%= form.label :Name %><br>
 	<%= form.text_field :name %>
@@ -35,17 +40,19 @@
 	<%= form.text_field :mother_bdate, class: "datepicker"  %>
 	</p>
 	<p>
-	<%= form.label :Children %><br>
-	<%= form.text_field :children %>
+	<%= form.fields_for :childrens do |child| %>
+		<%= render 'children_fields' , f: child %>
+	<% end %>
+  <div class="links">
+    <%= link_to_add_association "Add Child", form, :childrens %>
+  </div>
+  </p>
+	<p>	
+		<% if @user.avatar.exists? %>
+		  <%= image_tag @user.avatar.url(:medium) %><br/>
+		<% end %>
+		<%= form.file_field :avatar %>
 	</p>
-	<%= form.label :Children_Aadhar_Number %><br>
-	<%= form.text_field :children_aadhar_number %>
-	</p>
-	<p>
-	<%= form.label :Children_Birthdate %><br>
-	<%= form.text_field :children_bdate, class: "datepicker"  %>
-	</p>
-
 
 	<p>
 	<%= form.submit %>
