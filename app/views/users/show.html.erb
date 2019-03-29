@@ -17,18 +17,18 @@
  
 <p>
   <strong>Father Name:</strong>
-  <%= link_to @user.father_name, father_path(:user_id => @user.id) %>
+  <%= link_to @user.father_name, father_user_path(@user.id) %>
 </p>
 
 <p>
   <strong>Mother Name:</strong>
-  <%= link_to @user.mother_name, mother_path(:user_id => @user.id) %>
+  <%= link_to @user.mother_name, mother_user_path(@user.id) %>
 </p>
 
 <p>
   <strong>Children</strong>
   <% @user.childrens.each do |child| %>
-    <%= link_to child.children_name, children_path(:user_id => @user.id,:child_id => child.id) %>    
+    <%= link_to child.children_name, children_user_path(@user.id,:child_id => child.id) %>    
   <%end%>
 </p>
 

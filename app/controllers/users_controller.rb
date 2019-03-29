@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	before_action :find_by_id, except: [:index,:create]
 	def index
     	@users = User.paginate(page: params[:page], per_page: 5)
   	end
@@ -37,6 +37,17 @@ class UsersController < ApplicationController
 		@user.destroy
 
 		redirect_to users_path
+	end
+	def father
+	end
+	def mother
+	end
+	def children
+    	@children = Child.find(params[:child_id])
+	end
+
+	def find_by_id
+		@user = User.find(params[:id])
 	end
 
   	private

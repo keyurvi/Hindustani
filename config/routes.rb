@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-  get "app/views/users/fathers_detail", to: "parents#father", as: "father"
-  get "app/views/users/mothers_detail", to: "parents#mother", as: "mother"
-  get "app/views/users/children_detail", to: "parents#children", as: "children"
-
 
   resources :users do
   	resources :childrens
+  	member do
+  		get 'fathers_detail', to: "users#father", as: "father"
+  		get 'mothers_detail', to: "users#mother", as: "mother"
+  		get 'children_detail', to: "users#children", as: "children"
+
+
+  	end
   end
 
 
