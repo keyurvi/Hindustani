@@ -1,38 +1,44 @@
-<p>
-  <%= image_tag @user.avatar.url(:medium) %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
- 
-<p>
-  <strong>Aadhar No :</strong>
-  <%= @user.aadhar_number %>
-</p>
-<p>
-  <strong>Birth Date :</strong>
-  <%= @user.bdate %>
-</p>
- 
-<p>
-  <strong>Father Name:</strong>
-  <%= link_to @user.father_name, father_user_path(@user.id) %>
-</p>
+<div class ="bg-success">
+  <%= render 'logout' %>
 
-<p>
-  <strong>Mother Name:</strong>
-  <%= link_to @user.mother_name, mother_user_path(@user.id) %>
-</p>
+  <div class="text-center">
+    <p>
+      <%= image_tag @user.avatar.url(:medium) %>
+    </p>
+    <p>
+      <strong>Name:</strong>
+      <%= @user.name %>
+    </p>
+     
+    <p>
+      <strong>Aadhar No :</strong>
+      <%= @user.aadhar_number %>
+    </p>
+    <p>
+      <strong>Birth Date :</strong>
+      <%= @user.bdate %>
+    </p>
+     
+    <p>
+      <strong>Father Name:</strong>
+      <%= link_to @user.father_name, father_user_path(@user.id) %>
+    </p>
 
-<p>
-  <strong>Children</strong>
-  <% @user.childrens.each do |child| %>
-    <%= link_to child.children_name, children_user_path(@user.id,:child_id => child.id) %>    
-  <%end%>
-</p>
+    <p>
+      <strong>Mother Name:</strong>
+      <%= link_to @user.mother_name, mother_user_path(@user.id) %>
+    </p>
 
- 
+    <p>
+      <strong>Children</strong>
+      <% @user.childrens.each do |child| %>
+        <%= link_to child.children_name, children_user_path(@user.id,:child_id => child.id) %>    
+      <%end%>
+    </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Back', users_path %>
+     
+
+    <%= link_to 'Edit', edit_user_path(@user), :class => "button btn btn-primary"%>
+    <%= link_to 'Back', users_path, :class => "button btn btn-primary" %>
+  </div>
+</div>

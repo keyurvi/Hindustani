@@ -7,10 +7,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag :design %>
 
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+      <%= render 'users/headers'%>
+      <div class=”container">
+        <%= yield %>
+    </body>
+  </div>
 </html>

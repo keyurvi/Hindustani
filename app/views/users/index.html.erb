@@ -1,23 +1,22 @@
-<h1>Listing Users</h1>
- 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
- 
-  <% @users.each do |user| %>
+<div class="text-center">
+  <%= render 'logout' %>
+  <h1>Listing Users</h1>
+   
+  <table class="table table-hover text-centered">
     <tr>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td><%= link_to 'Show', user_path(user) %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Destroy', user_path(user),
+      <th>Name</th>
+    </tr> 
+    <tr>
+      <td><%= link_to current_user.name, user_path(current_user) %></td>
+      <td><%= link_to 'Show', user_path(current_user), :class => "button btn btn-default btn-xs" %></td>
+      <td><%= link_to 'Edit', edit_user_path(current_user), :class => "button btn btn-default btn-xs" %></td>
+      <td><%= link_to 'Destroy', user_path(current_user),
                       method: :delete,
-                      data: { confirm: 'Are you sure?' } %></td>
+                      data: { confirm: 'Are you sure?' }, :class => "button btn btn-default btn-xs" %></td>
     </tr>
-  <% end %>
-</table>
-
-<%= link_to 'new user', new_user_path %>
+  </table>
 
 
-<%= will_paginate @users %>
+
+  <%= will_paginate @users %>
+</div>

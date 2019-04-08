@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_091044) do
+ActiveRecord::Schema.define(version: 2019_04_08_071230) do
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "children_name"
@@ -20,11 +20,6 @@ ActiveRecord::Schema.define(version: 2019_03_29_091044) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_children_on_user_id"
-  end
-
-  create_table "cruds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,6 +67,11 @@ ActiveRecord::Schema.define(version: 2019_03_29_091044) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string "email"
+    t.string "encrypted_password"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
   end
 
   add_foreign_key "children", "users"
