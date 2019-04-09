@@ -29,6 +29,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'autoprefixer-rails'
+gem 'pg'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

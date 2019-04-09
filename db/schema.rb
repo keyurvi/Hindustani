@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_071230) do
+ActiveRecord::Schema.define(version: 2019_04_08_133455) do
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "children_name"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 2019_04_08_071230) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.integer "failed_attempts"
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   end
 
   add_foreign_key "children", "users"
