@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_133455) do
+ActiveRecord::Schema.define(version: 2019_03_29_091044) do
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "children_name"
@@ -22,40 +22,12 @@ ActiveRecord::Schema.define(version: 2019_04_08_133455) do
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
-  create_table "models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_models_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
-  end
-
-  create_table "parents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "parent_id"
-    t.integer "user_id"
-    t.string "Parent"
-    t.string "father_name"
-    t.string "mother_name"
-    t.integer "father_aadhar_no"
-    t.integer "mother_aadhar_no"
-    t.date "father_birth_date"
-    t.date "mother_birth_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "aadhar_number"
     t.date "bdate"
     t.string "father_name"
     t.string "mother_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "children"
     t.integer "father_aadhar_number"
     t.date "father_bdate"
@@ -67,8 +39,8 @@ ActiveRecord::Schema.define(version: 2019_04_08_133455) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string "email"
-    t.string "encrypted_password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -78,7 +50,11 @@ ActiveRecord::Schema.define(version: 2019_04_08_133455) do
     t.integer "failed_attempts"
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "children", "users"
