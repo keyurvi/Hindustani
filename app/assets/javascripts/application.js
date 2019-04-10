@@ -11,12 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
-//= require turbolinks
-//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require cocoon
 //= require activestorage
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
-//= require_tree .
+//= require_directory ./website

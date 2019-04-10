@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_03_29_091044) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "children", force: :cascade do |t|
+  create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "children_name"
     t.string "children_aadhar_number"
     t.date "children_bdate"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_091044) do
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "aadhar_number"
     t.date "bdate"
