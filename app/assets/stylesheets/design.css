@@ -10,3 +10,35 @@
   margin: auto;
     float: none;
 }
+body {
+ background-color: #bbffa0; 
+}
+
+.center_div{
+    margin: 0 auto;
+    width:0.1px; /* value of your choice which suits your alignment */
+}
+
+.h1 {
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+}
+
+@-webkit-keyframes hue {
+    from {
+      -webkit-filter: hue-rotate(0deg);
+    }
+
+    to {
+      -webkit-filter: hue-rotate(360deg);
+    }
+}
+
+
+.row-margin { 
+	margin-top:20px; 
+}
+

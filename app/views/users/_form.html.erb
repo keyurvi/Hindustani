@@ -1,64 +1,93 @@
-<div class="text-center">
-	<%= render 'logout' %>
-	<%= form_for(@user, :url => (@user.new_record? ? users_path : user_path(@user)), :method => (@user.new_record? ? "POST" : "PUT"), :html => {:multipart => true, :id => 'users-form'}) do |form| %>
-		
-		<% if @user.errors.full_messages.any? %>
-			  <% @user.errors.full_messages.each do |error_message| %>
-			    <%= error_message if @user.errors.full_messages.first == error_message %> <br />
-			  <% end %>
-			<% end %>
-		<p>
-		<%= form.label :Name %><br>
-		<%= form.text_field :name %>
-		</p>
-		<p>
-		<%= form.label :Aadhar_Number %><br>
-		<%= form.text_field :aadhar_number %>
-		</p>
-		<p>
-		<%= form.label :Birthdate %><br>
-		<%= form.text_field :bdate, class: "datepicker"  %>
-		</p>
-		<p>
-		<%= form.label :Father_name %><br>
-		<%= form.text_field :father_name %>
-		</p>
-		<%= form.label :Father_Aadhar_Number %><br>
-		<%= form.text_field :father_aadhar_number %>
-		</p>
-		<p>
-		<%= form.label :Father_Birthdate %><br>
-		<%= form.text_field :father_bdate, class: "datepicker"  %>
-		</p>
-		<p>
-		<%= form.label :Mother_name %><br>
-		<%= form.text_field :mother_name %>
-		</p>
-		<%= form.label :Mother_Aadhar_Number %><br>
-		<%= form.text_field :mother_aadhar_number %>
-		</p>
-		<p>
-		<%= form.label :Mother_Birthdate %><br>
-		<%= form.text_field :mother_bdate, class: "datepicker"  %>
-		</p>
-		<p>
-		<%= form.fields_for :childrens do |child| %>
-			<%= render 'children_fields' , f: child %>
-		<% end %>
-	  <div class="links">
-	    <%= link_to_add_association "Add Child", form, :childrens %>
-	  </div>
-	  </p>
-		<p>	
-			<% if @user.avatar.exists? %>
-			  <%= image_tag @user.avatar.url(:medium) %><br/>
-			<% end %>
-			<%= form.file_field :avatar %>
-		</p>
 
-		<p>
-		<%= form.submit %>
-		</p>
+<%= form_for(@user, :url => (@user.new_record? ? users_path : user_path(@user)), :method => (@user.new_record? ? "POST" : "PUT"), :html => {:multipart => true, :id => 'users-form'}) do |form| %>
+	
+	<% if @user.errors.full_messages.any? %>
+		  <% @user.errors.full_messages.each do |error_message| %>
+		    <%= error_message if @user.errors.full_messages.first == error_message %> <br />
+		  <% end %>
 		<% end %>
-</div>
+	<div class ='row'>
+		<div class = 'col-xs-6 col-md-6'>
+			<div class="row">
+				<div class = 'col-xs-4 col-md-4'>					
+						<%= form.label :Name %><br>
+						<%= form.label :Aadhar_Number %><br>
+						<%= form.label :Birthdate %>
+				</div>
+				<div class = 'col-xs-4 col-md-4'>
+					<%= form.text_field :user_name %><br>
+					<%= form.text_field :user_aadhar_number %><br>
+					<%= form.text_field :user_birthdate, class: "datepicker"%>
+				</div>
+			</div>
+		</div>
+		<div class = 'col-xs-6 col-md-6'>
+			<div class="row">
+				<div class = 'col-xs-4 col-md-4'>					
+						<%= form.label :Father_name %><br>
+						<%= form.label :Father_Aadhar_Number %><br>
+						<%= form.label :Father_Birthdate %>				</div>
+				<div class = 'col-xs-4 col-md-4'>
+					<%= form.text_field :father_name %><br>
+					<%= form.text_field :father_aadhar_number %><br>
+					<%= form.text_field :father_birthdate, class: "datepicker"%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class ='row'>
+		<div class = 'col-xs-6 col-md-6'>
+			<div class="row">
+				<div class = 'col-xs-4 col-md-4'>				
+						<%= form.label :Mother_name %><br>
+						<%= form.label :Mother_Aadhar_Number %><br>
+						<%= form.label :Mother_Birthdate %><br>
+						
+				</div>
+				<div class = 'col-xs-4 col-md-4'>
+					<%= form.text_field :mother_name %><br>
+					<%= form.text_field :mother_aadhar_number%><br>
+					<%= form.text_field :mother_birthdate, class: "datepicker"%>
+				</div>
+			</div>
+			<div class="row">
+				<div class = 'col-xs-6 col-md-6'>
+					<div class = 'col-xs-6 col-md-6'>
+						<% if @user.avatar.exists? %>
+						  <%= image_tag @user.avatar.url(:thumb) %>
+						<% end %>
+						<%= form.file_field :avatar %>
+					</div>
+					
+				</div>
+				<div class = 'col-xs-6 col-md-6'>
+					<%= form.label :Attachments %><br>
+					<% option = Document.people_roles.keys.to_a%>					
+					<%= form.fields_for :documents do |document| %>
+						<%= render 'document_fields', f: document%>
+					<% end %>
+					<div class="links">
+						<%= link_to_add_association "Add Attachment", form, :documents %>
+					</div>
+					
+				</div>			
+			</div>
+		</div>
+		<div class = 'col-xs-6 col-md-6'>
+			<%= form.label :Children %><br>
+			<%= form.fields_for :childrens do |child| %>
+				<%= render 'children_fields' , f: child %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association "Add Child", form, :childrens %>
+			</div>
+		</div>
+	</div>
+	<div class="form-actions">
+		<center>
+			<%= form.submit %>
+		</center>
+	</div>
+<% end %>
+
 

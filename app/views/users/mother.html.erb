@@ -1,4 +1,3 @@
-<%= render 'logout' %>
 <p>
   <strong>Mother Name:</strong>
   <%= @user.mother_name %>
@@ -9,8 +8,17 @@
 </p>
 <p>
   <strong>Mother's Birth Date :</strong>
-  <%= @user.mother_bdate %>
+  <%= @user.mother_birthdate %>
 </p>
+<p>
+  <strong>Mother's Attachments :</strong>
+  <%@document.each do |attr_name|%>
+  	<% if attr_name.attachment.exists? %>
+		<%= image_tag attr_name.attachment.url(:thumb) %>
+	<% end %>
+  	<%= attr_name.attachment_file_name%>
 
+	<%end%>
+</p>
 <%= link_to 'Back', user_path(@user) %>
 <%= link_to 'Edit', edit_user_path(@user) %>

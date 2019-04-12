@@ -10,31 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_091044) do
+ActiveRecord::Schema.define(version: 2019_04_11_105205) do
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "children_name"
     t.string "children_aadhar_number"
-    t.date "children_bdate"
-    t.bigint "user_id"
+    t.date "children_birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
+  create_table "documents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "people_type"
+    t.bigint "people_id"
+    t.integer "people_role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.index ["people_type", "people_id"], name: "index_documents_on_people_type_and_people_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "aadhar_number"
-    t.date "bdate"
+    t.string "user_name"
+    t.integer "user_aadhar_number"
+    t.date "user_birthdate"
     t.string "father_name"
-    t.string "mother_name"
-    t.string "children"
     t.integer "father_aadhar_number"
-    t.date "father_bdate"
+    t.date "father_birthdate"
+    t.string "mother_name"
     t.integer "mother_aadhar_number"
-    t.date "mother_bdate"
-    t.integer "children_aadhar_number"
-    t.date "children_bdate"
+    t.date "mother_birthdate"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"

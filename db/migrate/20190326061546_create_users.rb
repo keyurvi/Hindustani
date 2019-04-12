@@ -1,18 +1,15 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.string :name
-      t.integer :aadhar_number
-      t.date :bdate
+      t.string :user_name
+      t.integer :user_aadhar_number
+      t.date :user_birthdate
       t.string :father_name
-      t.string :mother_name
-      t.string :children
       t.integer :father_aadhar_number
-      t.date :father_bdate
+      t.date :father_birthdate
+      t.string :mother_name
       t.integer :mother_aadhar_number
-      t.date :mother_bdate
-      t.integer :children_aadhar_number
-      t.date :children_bdate
+      t.date :mother_birthdate
       t.attachment :avatar
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
