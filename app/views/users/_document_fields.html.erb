@@ -1,13 +1,16 @@
 <div class="nested-fields">
 	<div class="field">
-		<% option = Document.people_roles.keys.to_a%>
-		<%= f.select :people_role, option, {} %>
+		<% if f.object.people_type == 'User' %>
+				<% option = Document.people_roles.keys.to_a%>
+				<%= f.select :people_role, option, {} %>
+		<%end%>
 		<% if f.object.attachment.exists? %>
 		  <%= image_tag f.object.attachment.url(:thumb) %>
 		  <%= f.object.attachment_file_name %>
 		<% end %>
 		<%= f.file_field :attachment %>
-	</div>
 
-	<%= link_to_remove_association "Remove Attachment", f%>
+	</div>
+	<%= link_to_remove_association "Remove Attachment", f, data:{confirm: 'Really remove Attachment?'}%>
+		
 </div>

@@ -23,5 +23,16 @@
   <%= @user.mother_name %>
 </p>
 
+<p>
+  <strong>Children's Attachments :</strong>
+  <%@document.each do |attr_name|%>
+    <% if attr_name.attachment.exists? %>
+    <%= image_tag attr_name.attachment.url(:thumb) %>
+  <% end %>
+    <%= attr_name.attachment_file_name%>
+
+  <%end%>
+</p>
+
 <%= link_to 'Back', user_path(@user) %>
 <%= link_to 'Edit', edit_user_path(@user) %>

@@ -4,9 +4,7 @@
 	   <%= f.label :children_name %><br>
 	   <%= f.label :children_aadhar_number %><br>
 	   <%= f.label :children_bdate %>
-	   <%= f.fields_for :documents, Document.new do |document| %>
-			<%= document.file_field :attachment %>
-		<% end %>
+	   
 	</div>
 	<div class = 'col-xs-4 col-md-4'>
 		<%= f.text_field :children_name %>
@@ -14,7 +12,16 @@
 		<%= f.text_field :children_birthdate, class: "datepicker"%>
 	</div>
  </div>
- <%= link_to_remove_association "Remove Child", f%>
+ 
+<div class="row field ">
+	<%= f.fields_for :documents do |document| %>
+		<%= render 'document_fields', f: document%>
+	<% end %>
+	<div class="links">
+		<%= link_to_add_association "Add Attachment", f, :documents %>
+	</div>
+ </div>
+ <%= link_to_remove_association "Remove Child", f, data:{confirm: 'Really remove Chils?'}%>
 </div>
 
 

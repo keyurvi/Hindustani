@@ -18,14 +18,13 @@ class UsersController < ApplicationController
   	end
 
   	def show
-		@document = Document.where(:people_role => 0, :people_id => current_user.id.to_i)
+		@document = @user.documents.where(:people_role => :User)
   	end
 
   	def edit
   	end
 
   	def update
-  		# raise params.inspect
 		if @user.update(user_params)
 		  redirect_to @user
 		else
@@ -39,17 +38,17 @@ class UsersController < ApplicationController
 	end
 
 	def father
-		@document = Document.where(:people_role => 1, :people_id => current_user.id.to_i)
-		# raise @document.inspect
+		@document = @user.documents.where(:people_role => :Father)
 	end
 
 	def mother
-		@document = Document.where(:people_role => 2, :people_id => current_user.id.to_i)
+		@document = @user.documents.where(:people_role => :Mother)
 
 	end
 
 	def children
     	@children = Child.find(params[:child_id])
+    	@document = @children.documents
 	end
 
 	def find_by_id
