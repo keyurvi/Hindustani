@@ -1,0 +1,2 @@
+class Keyur < ApplicationRecord
+end
