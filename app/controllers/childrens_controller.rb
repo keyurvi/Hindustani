@@ -10,6 +10,7 @@ class ChildrensController < ApplicationController
 	def destroy
 		@children = @user.childrens.find(params[:id])
 		@children.destroy
+		@test = "test"
 		redirect_to user_path(@user)
 
 	end
