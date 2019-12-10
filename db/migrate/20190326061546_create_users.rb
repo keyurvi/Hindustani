@@ -2,13 +2,13 @@ class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       t.string :user_name
-      t.integer :user_aadhar_number
+      t.string :user_aadhar_number
       t.date :user_birthdate
       t.string :father_name
-      t.integer :father_aadhar_number
+      t.string :father_aadhar_number
       t.date :father_birthdate
       t.string :mother_name
-      t.integer :mother_aadhar_number
+      t.string :mother_aadhar_number
       t.date :mother_birthdate
       t.attachment :avatar
       t.string :email, null: false, default: ""
