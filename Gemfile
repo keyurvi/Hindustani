@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.0'
+ruby '2.5.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem "paperclip", "~> 6.0.0"
 gem "cocoon"
-gem 'devise'
+gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'autoprefixer-rails'
@@ -48,8 +48,11 @@ gem 'omniauth-facebook'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap-datepicker-rails'
-gem 'pg'
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '>=3.0.pre2'
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
