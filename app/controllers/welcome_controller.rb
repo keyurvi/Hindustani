@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  before_action :authenticate_user!
   def index
   	unless current_user.try(:user_name)
 		redirect_to edit_user_path(current_user)

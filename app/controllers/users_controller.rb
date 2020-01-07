@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
 	before_action :find_by_id, except: [:index,:create,:new]
 
 	def index

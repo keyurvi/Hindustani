@@ -1,4 +1,5 @@
 class ChildrensController < ApplicationController
+	before_action :authenticate_user!
 	before_action :find_child_by_id, only: [:create,:destroy] 
 
 	def create
